@@ -13,6 +13,7 @@ from google.adk.agents.context import Context
 from google.adk.apps import App, ResumabilityConfig
 from google.adk.events.event import Event
 from google.adk.events.request_input import RequestInput
+from google.adk.models import Gemini
 from google.adk.tools import AgentTool
 from google.adk.tools.mcp_tool import McpToolset
 from google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams
@@ -44,10 +45,13 @@ mcp_toolset = McpToolset(
     ),
 )
 
-# Define specialized LlmAgent sub-agents
+# Define specialized LlmAgent sub-agents with automatic retry options
 sentiment_analyzer = LlmAgent(
     name="sentiment_analyzer",
-    model=config.model,
+    model=Gemini(
+        model=config.model,
+        retry_options=types.HttpRetryOptions(attempts=5),
+    ),
     instruction="""You are a Social Media Sentiment Analyzer.
 Analyze the sentiment of the social media post.
 Determine if the sentiment is 'positive', 'neutral', or 'negative'.
@@ -60,7 +64,10 @@ Provide a concise summary of the post's core issue or compliment.
 
 response_drafter = LlmAgent(
     name="response_drafter",
-    model=config.model,
+    model=Gemini(
+        model=config.model,
+        retry_options=types.HttpRetryOptions(attempts=5),
+    ),
     instruction="""You are a Social Media Response Drafter.
 Draft a professional and context-appropriate reply to the social media post based on its sentiment and summary.
 If sentiment is positive, express gratitude. If neutral, be helpful and informative. If negative, be empathetic, apologetic, and offer assistance.
@@ -76,10 +83,13 @@ You have access to the following tools from the company's database:
     tools=[mcp_toolset],
 )
 
-# Define the Orchestrator LlmAgent
+# Define the Orchestrator LlmAgent with automatic retry options
 orchestrator = LlmAgent(
     name="orchestrator",
-    model=config.model,
+    model=Gemini(
+        model=config.model,
+        retry_options=types.HttpRetryOptions(attempts=5),
+    ),
     instruction="""You are the Social Media Monitor Orchestrator.
 Your goal is to coordinate the analysis of a social media post and draft a reply.
 
