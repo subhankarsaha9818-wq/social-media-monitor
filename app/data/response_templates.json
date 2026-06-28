@@ -1,0 +1,14 @@
+[
+  {
+    "keyword": "refund",
+    "template": "We are sorry for the billing issue. Please DM us your account details so we can process your refund immediately."
+  },
+  {
+    "keyword": "quality",
+    "template": "We strive for excellence and apologize that we fell short. Let's make this right\u2014please DM us to coordinate."
+  },
+  {
+    "keyword": "thank you",
+    "template": "Thank you so much for the kind words! We are thrilled to hear you had a great experience."
+  }
+]

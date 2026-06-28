@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "post_content": "Customer claims the product is a fraud, service stole money, and support is unresponsive to emails.",
+    "sentiment": "negative",
+    "suggested_response": "We sincerely apologize for your terrible experience. We understand your frustration regarding the product and unresponsive support. This is not the experience we want for our customers. Please DM us your details so we can investigate this immediately and help resolve your concerns.",
+    "status": "Logged",
+    "timestamp": "2026-06-28T14:18:24.303239+00:00Z"
+  }
+]
