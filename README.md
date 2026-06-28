@@ -25,22 +25,22 @@ Below is the workflow graph showing how brand mentions flow through security che
 
 ```mermaid
 graph TD
-    START[START] --> SC[Security Checkpoint]
-    
-    SC -- SECURITY_EVENT --> SVH[Security Violation Handler]
-    SC -- __DEFAULT__ --> ORC[Orchestrator Agent]
-    
-    ORC --> RG[Review Gate Node]
-    
-    RG -- feedback --> ORC
-    RG -- approved --> FO[Final Output Node]
-    
-    subgraph Sub-Agents (AgentTool)
+    START([START]) --> SC[Security Checkpoint]
+
+    SC -->|SECURITY_EVENT| SVH[Security Violation Handler]
+    SC -->|default| ORC[Orchestrator Agent]
+
+    ORC --> RG[Review Gate]
+
+    RG -->|feedback| ORC
+    RG -->|approved| FO[Final Output]
+
+    subgraph "Sub-Agents via AgentTool"
         ORC -.-> SA[Sentiment Analyzer]
         ORC -.-> RD[Response Drafter]
     end
-    
-    subgraph MCP Server
+
+    subgraph "MCP Server"
         RD -.-> MCP1[fetch_brand_guidelines]
         RD -.-> MCP2[search_response_templates]
         ORC -.-> MCP3[log_incident]
