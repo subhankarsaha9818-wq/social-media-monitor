@@ -115,6 +115,17 @@ graph TD
 ## Demo Script
 Refer to [DEMO_SCRIPT.txt](file:///c:/Users/SUBHANKAR%20SAHA/Documents/Ai_workspace_project/social-media-monitor/DEMO_SCRIPT.txt) for a complete spoken walkthrough of this project.
 
+## Assets
+
+### Architecture Diagram
+![Agent Workflow Architecture](assets/architecture_diagram.png)
+
+### Cover Banner
+![Social Media Monitor Cover](assets/cover_page_banner.png)
+
+## Demo Script
+Refer to [DEMO_SCRIPT.txt](DEMO_SCRIPT.txt) for a complete spoken walkthrough of this project.
+
 ## Push to GitHub
 
 1. Create a new repo at https://github.com/new
